@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+    #set ($title = "Leaderboard - M.A.R")
+    #set ($cur_page = "leaderboard")
+    #parse("head.vm")
+<body>
+
+    #parse("header.vm")
+
+<div class="container">
+    <div class="card">
+        <div class="card-header"><h5>Leaderboard</h5></div>
+        <div class="card-body">
+            <table class="table table-hover table-striped">
+                <thead class="thead-dark">
+                <tr>
+                    <th>Player</th>
+                    <th>Completed vaults</th>
+                    <th>Death count</th>
+                    <th>Total execution time (ms)</th>
+                    <th>Walk distance</th>
+                </tr>
+                </thead>
+                <tbody>
+                    #foreach($row in $stats)
+                    <tr>
+                        <td>$row.getKey().getUsername()</td>
+                        <td>$row.getValue().get("completedVaults")</td>
+                        <td>$row.getValue().get("death")</td>
+                        <td>$row.getValue().get("executionTime")</td>
+                        <td>$row.getValue().get("walkDistance")</td>
+                    </tr>
+                    #end
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+    #parse("footer.vm")
+
+</body>
+
+</html>
